@@ -1,0 +1,19 @@
+@import '../../styles/mixins';
+
+.list {
+  display: block;
+  width: 100%;
+  list-style: none;
+
+  @include Table {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @include Desctop {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

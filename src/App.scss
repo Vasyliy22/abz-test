@@ -1,0 +1,18 @@
+@import './styles/mixins';
+
+.App {
+  min-height: 100vh;
+  background-color: #F8F8F8;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}

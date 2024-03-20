@@ -1,0 +1,19 @@
+.link {
+  display: flex;
+  justify-content: center;
+  padding: 4px 22px;
+  border-radius: 80px;
+  background-color: #F4E041;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 26px;
+  border: none;
+  cursor: pointer;
+  transition: all .3s;
+  text-decoration: none;
+
+  &:active {
+    background-color: #ecd20e;
+    transform: scale(1.1);
+  }
+}

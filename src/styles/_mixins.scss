@@ -1,0 +1,17 @@
+@mixin mobile {
+  @media ((min-width: 360px) and (max-width: 412px)) {
+    @content;
+  }
+}
+
+@mixin Table {
+  @media ((min-width: 412px) and (max-width: 1024px)) {
+    @content;
+  }
+}
+
+@mixin Desctop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}

@@ -1,0 +1,16 @@
+@import '../../styles/mixins';
+
+.container {
+  height: 100%;
+  margin: 0 auto;
+  padding: 13px 16px 0 16px;
+
+  @include Table {
+    padding: 13px 32px 0 32px;
+  }
+
+  @include Desctop {
+    max-width: 1020px;
+    padding: 13px 60px 0 60px;
+  }
+}

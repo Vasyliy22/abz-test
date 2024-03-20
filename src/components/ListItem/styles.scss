@@ -1,0 +1,24 @@
+@import '../../styles/mixins';
+
+.list__item {
+  display: block;
+  padding: 20px 0;
+
+  @include Table {
+    flex: 0 1 50%;
+    padding-right: 16px;
+
+    &:nth-child(2n) {
+      padding-right: 0;
+    }
+  }
+
+  @include Desctop {
+    flex: 0 1 33%;
+    padding-right: 16px;
+
+    &:nth-child(3n) {
+      padding-right: 0;
+    }
+  }
+}

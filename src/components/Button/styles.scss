@@ -1,0 +1,25 @@
+.button {
+  width: 120px;
+  padding: px 29px;
+  border-radius: 80px;
+  background-color: #F4E041;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 26px;
+  border: none;
+  cursor: pointer;
+  transition: all .3s;
+  user-select: none;
+
+  &:active {
+    background-color: #ecd20e;
+    transform: scale(1.1);
+  }
+
+  &:disabled {
+    background-color: black;
+    color: #fff;
+    transform: scale(1);
+    cursor: not-allowed;
+  }
+}
