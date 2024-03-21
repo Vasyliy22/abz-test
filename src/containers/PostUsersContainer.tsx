@@ -6,6 +6,8 @@ import { ChangeEvent, useState } from 'react';
 import { createUser } from '../api';
 import UserForm from '../components/UserForm';
 import { Formik } from 'formik';
+import { useAppDispatch } from '../store/hooks';
+import { setNewUser } from '../store/redusers/usersSlice';
 
 const emailRules = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 const phoneRules = /^\+38(0\d{9})$/;
@@ -26,7 +28,7 @@ const PostUsersContainer = () => {
   const [image, setImage] = useState<File | null>(null);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
-  const refresh = () => window.location.reload();
+  const dispatch = useAppDispatch();
 
   const handleChangeImage = (event: ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) {
@@ -64,10 +66,9 @@ const PostUsersContainer = () => {
           }
         }
         validationSchema={SignupSchema}
-        onSubmit={(values, action) => {
+         onSubmit={(values, action) => {
 
           const user = {
-            id: Math.floor(Math.random() * 1000),
             name: values.name,
             email: values.email,
             phone: values.phone,
@@ -77,11 +78,20 @@ const PostUsersContainer = () => {
             registration_timestamp: +(new Date())
           }
 
-          createUser(user);
+          const currentUser = createUser(user);
+
+          currentUser.then(res => {
+            if (res.success === true) {
+              fetch(`https://frontend-test-assignment-api.abz.agency/api/v1/users/${res.user_id}`)
+              .then(res => res.json()).then(user => {
+                dispatch(setNewUser(user));
+              });
+            }
+          });
+
           setImage(null);
           setMessage('Upload your photo');
           action.resetForm();
-          refresh();
         }}
       >
         {({ values, handleSubmit, handleChange }) => (

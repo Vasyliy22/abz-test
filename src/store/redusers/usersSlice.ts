@@ -31,6 +31,7 @@ export const moreUsersThunk = createAsyncThunk('moreUserss/getUsers',
 
 const initialState: DataFromServer = {
   users: [],
+  user: null,
   total_users: 0,
   total_pages: 0,
   page: 0,
@@ -48,7 +49,12 @@ const initialState: DataFromServer = {
 export const usersSlice = createSlice({
   name: 'users',
   initialState,
-  reducers: {},
+  reducers: {
+    setNewUser: (state, action) => {
+      state.users = [action.payload.user, ...state.users.slice(0, 5)];
+      state.user = action.payload.user;
+    }
+  },
 
   extraReducers: (builder) => {
     builder.addCase(usersThunk.pending, (state) => {
@@ -56,7 +62,6 @@ export const usersSlice = createSlice({
     });
 
     builder.addCase(usersThunk.fulfilled, (state, action) => {
-      
       state.users = action.payload.newestUsers;
       state.total_users = action.payload.total_users;
       state.count = action.payload.count;
@@ -89,3 +94,4 @@ export const usersSlice = createSlice({
 })
 
 export default usersSlice.reducer;
+export const { setNewUser } = usersSlice.actions;

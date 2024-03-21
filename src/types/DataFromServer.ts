@@ -1,7 +1,9 @@
+import User from "./User";
 import Users from "./Users";
 
 export default interface DataFromServer {
   users: Users[],
+  user: User | null,
   total_users: number,
   page: number,
   success: boolean,

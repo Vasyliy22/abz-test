@@ -42,7 +42,7 @@
     top: calc(13px + 13px + 34px);
     left: 0;
     right: 0;
-    background-image: url(../../images/main-picture.png);
+    background-image: url(../../images/main-picture.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -57,7 +57,7 @@
     }
 
     @include Desctop {
-      background-image: url(../../images/main-picture-desctop.png);
+      background-image: url(../../images/main-picture-desctop.jpg);
       position: relative;
       top: 13px;
       height: 650px;
